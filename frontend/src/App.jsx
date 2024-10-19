@@ -5,7 +5,7 @@ import CoverPage from './pages/Home.jsx';
 import Curriculum from './pages/Curriculum.jsx';
 import Blogs from './pages/Blogs.jsx';
 import Fee from './pages/Fee.jsx';
-import Contact from './pages/contact.jsx';
+import Contact from './pages/Contact.jsx';
 import Enroll from './pages/Enroll.jsx';
 
 function App() {
