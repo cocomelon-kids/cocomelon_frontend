@@ -1,0 +1,192 @@
+/* Import playful fonts */
+@font-face {
+    font-family: 'CocomelonFont';
+    src: url('/fonts/Acme-Regular.ttf') format('truetype');
+    src: url('/fonts/Simple Cartoon.ttf') format('truetype');
+    src: url('/fonts/Jonathan Ball - Acre-Medium.ttf') format('truetype');
+    src: url('/fonts/Jonathan Ball - Magic Bread Regular.ttf') format('truetype');
+    src: url('/fonts/Jonathan Ball - Jorell Lieven Demo.ttf') format('truetype');
+  }
+  /* General Container */
+  .cover-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    font-family: 'CocomelonFont', 'Acme-Regular';
+    background-color: #f7f7f7;
+    color: #4B0082; /* Purple theme color */
+  }
+  
+/* Cover Image Styling */
+.cover-image {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+  }
+  .cover {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+  }
+  
+  .image-carousel {
+    width: 80%;
+    max-width: 800px;
+    margin-bottom: 20px;
+  }
+  
+  .carousel-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .slick-dots li button:before {
+    color: #084571;
+  }
+  
+  .slick-prev, .slick-next {
+    color: #084571;
+    font-size: 24px;
+    z-index: 1;
+  }
+  /* Contact Information Section */
+  .contact-info {
+    text-align: center;
+    margin-top: 20px;
+    padding: 0 20px;
+  }
+  
+  .contact-info h1 {
+    font-size: 100px;
+    color: #4B0082; /* Purple color */
+    margin-bottom: 5px;
+    font-family: 'CocomelonFont', 'Simple Cartoon';
+  }
+  
+  .contact-info h2 {
+    font-size: 40px;
+    color: #FFD700; /* Yellow color */
+    margin-bottom: 40px;
+    font-family: 'CocomelonFont', 'Jonathan Ball - Acre-Medium';
+  }
+  .info{
+    font-size: 35px;
+    font-family: 'CocomelonFont', 'Jonathan Ball - Acre-Medium';
+  }
+  
+  /* About Us Section */
+  .about-us {
+    font-size: 25px;
+    text-align: center;
+    margin-top: 10px;
+    max-width: 800px;
+    padding: 0 20px;
+    font-family: 'CocomelonFont', 'Magic Bread Regular';
+  }
+  
+  /* Enroll Button Section */
+  .enroll-section {
+    margin-top: 40px;
+  }
+  
+  .enroll-butn {
+    padding: 15px 30px;
+    background-color: #ffd000; /* Yellow color */
+    color: #4B0082;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', 'sans-serif';
+    font-weight: bolder;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .enroll-butn:hover {
+    background-color: #4B0082;
+    color: #FFD700;
+  }
+  /* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .cover-image {
+    width: 100%; /* Ensure full width on mobile */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+  .contact-info h1 {
+    font-size: 32px;
+  }
+
+  .contact-info h2 {
+    font-size: 24px;
+  }
+
+  .contact-info p, .contact-info ul {
+    font-size: 16px;
+  }
+
+  .about-us h2 {
+    font-size: 22px;
+    font-weight: bold;
+    color: rgb(0, 7, 85);
+  }
+
+  .about-us p {
+    font-size: 16px;
+    color: rgb(19, 19, 19);
+  }
+
+  .contact-info ul li {
+    margin: 3px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .cover-container {
+    padding: 10px;
+  }
+
+  .cover-image {
+    width: 100%; /* Full width on mobile */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+  .contact-info h1 {
+    font-size: 28px;
+  }
+
+  .contact-info h2 {
+    font-size: 20px;
+  }
+
+  .contact-info p, .contact-info ul {
+    font-size: 14px;
+  }
+
+  .about-us h2 {
+    font-size: 20px;
+  }
+
+  .about-us p {
+    font-size: 14px;
+  }
+
+  /* Enroll Button Styles for Mobile */
+  .enroll-section {
+    margin-top: 15px;
+    text-align: center;
+  }
+
+  .enroll-butn {
+    padding: 10px 20px;
+    font-size: 16px;
+    display: inline-block;
+    text-decoration: none;
+    color: #4B0082;
+    background-color: #FFD700;
+  }
+
+  .enroll-butn:hover {
+    background-color: #4B0082;
+    color: #FFD700;
+  }
+}
