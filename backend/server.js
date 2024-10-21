@@ -1,21 +1,27 @@
 const express = require('express');
+const cors = require('cors');
 const { Pool } = require('pg');
 const bcrypt = require('bcryptjs');
 const path = require('path');
 require('dotenv').config();
 
-const app = express();
+const app = express(); // Initialize express app
 const port = process.env.PORT || 5000;
 
-// Middleware to parse JSON
-app.use(express.json());
+// CORS options
+const corsOptions = {
+  origin: 'http://localhost:5173', // Allow your frontend origin
+  methods: ['GET', 'POST'],
+  credentials: true,
+};
+
+app.use(cors(corsOptions)); // Enable CORS
+app.use(express.json()); // Middleware to parse JSON
 
 // PostgreSQL Pool Configuration
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
+  ssl: { rejectUnauthorized: false },
 });
 
 // Serve the frontend
@@ -23,26 +29,31 @@ app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
 // Registration Endpoint
 app.post('/api/register', async (req, res) => {
-  const { name, phone, password } = req.body;
+  const { childName, phone, password, program } = req.body;
 
-  if (!name || !phone || !password) {
+  // Validate input
+  if (!childName || !phone || !password || !program) {
     return res.status(400).json({ error: 'All fields are required' });
   }
 
   try {
-    const userExist = await pool.query('SELECT * FROM users WHERE phone = $1', [phone]);
+    // Check if user already exists
+    const userExist = await pool.query('SELECT * FROM students WHERE phone = $1', [phone]);
     if (userExist.rows.length > 0) {
       return res.status(400).json({ error: 'User already registered' });
     }
 
+    // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    // Insert new student into the database
     const result = await pool.query(
-      'INSERT INTO users (name, phone, password) VALUES ($1, $2, $3) RETURNING *',
-      [name, phone, hashedPassword]
+      'INSERT INTO students (child_name, phone, password, program) VALUES ($1, $2, $3, $4) RETURNING *',
+      [childName, phone, hashedPassword, program]
     );
 
-    res.status(201).json({ message: 'User registered successfully', user: result.rows[0] });
+    // Respond with success message and student data
+    res.status(201).json({ message: 'Student registered successfully', student: result.rows[0] });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Database error' });
@@ -53,23 +64,27 @@ app.post('/api/register', async (req, res) => {
 app.post('/api/login', async (req, res) => {
   const { phone, password } = req.body;
 
+  // Validate input
   if (!phone || !password) {
     return res.status(400).json({ error: 'Phone and password are required' });
   }
 
   try {
-    const user = await pool.query('SELECT * FROM users WHERE phone = $1', [phone]);
+    // Check if user exists
+    const user = await pool.query('SELECT * FROM students WHERE phone = $1', [phone]);
 
     if (user.rows.length === 0) {
       return res.status(400).json({ error: 'User not found' });
     }
 
+    // Verify password
     const validPassword = await bcrypt.compare(password, user.rows[0].password);
     if (!validPassword) {
       return res.status(400).json({ error: 'Invalid credentials' });
     }
 
-    res.status(200).json({ message: 'Login successful', user: user.rows[0] });
+    // Respond with success message and student data
+    res.status(200).json({ message: 'Login successful', student: user.rows[0] });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Database error' });

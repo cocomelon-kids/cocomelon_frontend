@@ -58,7 +58,7 @@ const Fee = () => {
         <h3 className="section-title">Pre-School Fees (PM)</h3>
         <p className="timing">Timings: 9:00 PM - 4:30 PM</p>
         <div className="fee-card-container">
-          {daycareFeesPM.map((fee, index) => (
+          {preschoolFeesPM.map((fee, index) => (
             <div key={index} className="fee-card">
               <div className="fee-title">{fee.plan}</div>
               <div className="fee-amount">

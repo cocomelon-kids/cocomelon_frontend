@@ -26,7 +26,7 @@ const Footer = () => {
         <h3 className="footer-title">Follow Us</h3>
         <div className="social-icons">
           <a 
-            href="https://www.instagram.com" 
+            href="https://www.instagram.com/cocomelon.preschool/" 
             target="_blank" 
             rel="noopener noreferrer" 
             className="social-link instagram"
@@ -36,7 +36,7 @@ const Footer = () => {
           </a>
 
           <a 
-            href="https://www.youtube.com" 
+            href="https://www.youtube.com/@cocomelon.preschool" 
             target="_blank" 
             rel="noopener noreferrer" 
             className="social-link youtube"

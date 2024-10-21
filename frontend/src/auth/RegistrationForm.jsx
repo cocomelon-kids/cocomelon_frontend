@@ -1,4 +1,5 @@
-// src/Auth/RegistrationForm.jsx
+// frontend/src/components/RegistrationForm.jsx
+
 import React, { useState } from 'react';
 import './FormStyles.css';
 
@@ -16,7 +17,7 @@ const RegistrationForm = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
       alert("Passwords don't match");
@@ -26,8 +27,30 @@ const RegistrationForm = () => {
       alert('Please select a program');
       return;
     }
-    // Handle form submission logic here (e.g., API call to register user)
-    console.log('Registration Data:', formData);
+
+    try {
+      const response = await fetch('http://localhost:5000/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          childName: formData.childName,
+          phone: formData.phone,
+          password: formData.password,
+          program: formData.program,
+        }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        alert('Registration successful!');
+        console.log('Registered Student:', data.student);
+      } else {
+        alert(data.error || 'Registration failed');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Something went wrong. Please try again.');
+    }
   };
 
   return (
