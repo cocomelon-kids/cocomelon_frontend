@@ -1,26 +1,24 @@
-// Import necessary modules
 const express = require('express');
 const { Pool } = require('pg');
 const bcrypt = require('bcryptjs');
 const path = require('path');
 require('dotenv').config();
 
-// Initialize the Express application
 const app = express();
 const port = process.env.PORT || 5000;
 
-// Middleware to parse JSON requests
+// Middleware to parse JSON
 app.use(express.json());
 
 // PostgreSQL Pool Configuration
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: {
-    rejectUnauthorized: false, // Ensure SSL works for PostgreSQL
+    rejectUnauthorized: false,
   },
 });
 
-// Serve the frontend static files
+// Serve the frontend
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
 // Registration Endpoint
@@ -32,16 +30,13 @@ app.post('/api/register', async (req, res) => {
   }
 
   try {
-    // Check if the user is already registered
     const userExist = await pool.query('SELECT * FROM users WHERE phone = $1', [phone]);
     if (userExist.rows.length > 0) {
       return res.status(400).json({ error: 'User already registered' });
     }
 
-    // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Insert the user into the database
     const result = await pool.query(
       'INSERT INTO users (name, phone, password) VALUES ($1, $2, $3) RETURNING *',
       [name, phone, hashedPassword]
@@ -63,14 +58,12 @@ app.post('/api/login', async (req, res) => {
   }
 
   try {
-    // Check if the user exists
     const user = await pool.query('SELECT * FROM users WHERE phone = $1', [phone]);
 
     if (user.rows.length === 0) {
       return res.status(400).json({ error: 'User not found' });
     }
 
-    // Check if the password matches
     const validPassword = await bcrypt.compare(password, user.rows[0].password);
     if (!validPassword) {
       return res.status(400).json({ error: 'Invalid credentials' });
