@@ -1,0 +1,73 @@
+/* Full-screen slider container */
+.slider-container {
+    position: relative;
+    width: 90vw;
+    height: 100vh;
+    overflow: hidden;
+    margin: auto; /* Center the slider horizontally */
+  }
+  
+  /* Slide styling */
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+  }
+  
+  /* Active slide with full opacity */
+  .slide.active {
+    opacity: 1;
+  }
+  
+  /* Arrow button styling */
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 12px 16px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 32px;
+    transition: background-color 0.3s;
+  }
+  
+  /* Arrow button positions */
+  .prev {
+    left: 15px;
+  }
+  
+  .next {
+    right: 15px;
+  }
+  
+  /* Hover effect for arrow buttons */
+  .arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  /* Mobile-friendly responsiveness */
+  @media (max-width: 768px) {
+    .slider-container {
+      height: 300px;
+    }
+  
+    .slide {
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  
+    .arrow {
+      font-size: 24px;
+      padding: 8px 12px;
+    }
+  }
+  

@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+    z-index: 2;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2; /* Light background */
+}
+
+.blog-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.blog-title {
+    text-align: center;
+    font-size: 36px;
+    color: #4B0082; /* Purple theme */
+    margin-bottom: 20px;
+}
+
+.posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.post {
+    background-color: white; /* White background for each post */
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    transition: transform 0.2s;
+}
+
+.post:hover {
+    transform: scale(1.05); /* Slightly enlarge post on hover */
+}
+
+.post-title {
+    font-size: 24px;
+    color: #4B0082; /* Purple title */
+}
+
+.post-date {
+    font-size: 14px;
+    color: #888; /* Gray color for date */
+}
+
+.post-image {
+    width: 100%;
+    border-radius: 10px;
+    height: auto;
+}
+
+.post-video {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.post-description {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333; /* Dark gray for description */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .blog-title {
+        font-size: 28px;
+    }
+
+    .post-title {
+        font-size: 20px;
+    }
+
+    .post-description {
+        font-size: 14px;
+    }
+}
