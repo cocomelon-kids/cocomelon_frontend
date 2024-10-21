@@ -1,13 +1,15 @@
+// Import necessary modules
 const express = require('express');
 const { Pool } = require('pg');
 const bcrypt = require('bcryptjs');
 const path = require('path');
 require('dotenv').config();
 
+// Initialize the Express application
 const app = express();
 const port = process.env.PORT || 5000;
 
-// Middleware to parse JSON
+// Middleware to parse JSON requests
 app.use(express.json());
 
 // PostgreSQL Pool Configuration
@@ -18,7 +20,7 @@ const pool = new Pool({
   },
 });
 
-// Serve the frontend
+// Serve the frontend static files
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
 // Registration Endpoint
@@ -44,7 +46,7 @@ app.post('/api/register', async (req, res) => {
       'INSERT INTO users (name, phone, password) VALUES ($1, $2, $3) RETURNING *',
       [name, phone, hashedPassword]
     );
-    
+
     res.status(201).json({ message: 'User registered successfully', user: result.rows[0] });
   } catch (error) {
     console.error(error);
@@ -63,7 +65,7 @@ app.post('/api/login', async (req, res) => {
   try {
     // Check if the user exists
     const user = await pool.query('SELECT * FROM users WHERE phone = $1', [phone]);
-    
+
     if (user.rows.length === 0) {
       return res.status(400).json({ error: 'User not found' });
     }
@@ -81,11 +83,12 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
-// Serve the Vite frontend for any route that isn't an API call
+// Serve the frontend for any route that isn't an API call
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
 });
 
+// Start the server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
