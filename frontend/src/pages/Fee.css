@@ -1,0 +1,97 @@
+/* Fee Menu Container Styling */
+.fee-menu-container {
+  padding: 40px;
+  background-color: #f0f4f8;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+}
+
+/* Title Styling */
+.menu-title {
+  font-size: 36px;
+  margin-bottom: 10px;
+  color: #084571;
+}
+
+.menu-subtitle {
+  font-size: 18px;
+  margin-bottom: 30px;
+  color: #019aed;
+}
+
+/* Fee Section Styling */
+.fee-section {
+  margin-bottom: 40px; /* Space between sections */
+  text-align: left; /* Align text to left for better readability */
+  border: 1px solid #d1e1f1; /* Add border to sections */
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px; /* Padding inside sections */
+  background-color: #ffffff; /* White background for sections */
+}
+
+/* Section Title */
+.section-title {
+  font-size: 24px;
+  color: #084571;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #f6b24d; /* Underline for section titles */
+  padding-bottom: 10px; /* Space below section titles */
+}
+
+/* Fee Card Container */
+.fee-card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* Fee Card Styling */
+.fee-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.fee-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Fee Title */
+.fee-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #084571;
+}
+
+/* Fee Amount */
+.fee-amount {
+  font-size: 24px;
+  color: #f6b24d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+/* Mobile Styling */
+@media (max-width: 768px) {
+  .menu-title {
+      font-size: 28px;
+  }
+
+  .section-title {
+      font-size: 20px;
+  }
+
+  .fee-title {
+      font-size: 18px;
+  }
+
+  .fee-amount {
+      font-size: 22px;
+  }
+}
