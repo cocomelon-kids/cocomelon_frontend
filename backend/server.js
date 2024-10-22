@@ -10,10 +10,11 @@ const port = process.env.PORT || 5000;
 
 // CORS options
 const corsOptions = {
-  origin: 'http://localhost:5173', // Allow your frontend origin
+  origin: ['http://localhost:5173', 'https://www.cocomelonkids.online'], // Allow both local and production frontend origins
   methods: ['GET', 'POST'],
   credentials: true,
 };
+
 
 app.use(cors(corsOptions)); // Enable CORS
 app.use(express.json()); // Middleware to parse JSON
