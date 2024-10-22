@@ -8,7 +8,7 @@ export default defineConfig({
     proxy: {
       // Proxy API requests to the backend server
       '/api': {
-        target: 'http://localhost:5000', // URL of your backend
+        target: 'http://https://cocomelonkids.onrender.com/', // URL of your backend
         changeOrigin: true,
         secure: false, // Set to true if using HTTPS
       },
