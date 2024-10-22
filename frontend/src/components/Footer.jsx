@@ -8,16 +8,16 @@ const Footer = () => {
       <div className="footer-section footer-contact">
         <h3 className="footer-title">Contact Us</h3>
         <p>Cocomelon Preschool and Daycare</p>
-        <p>123 ABC Street, Visakhapatnam, Andhra Pradesh 530013</p>
+        <p>51-8,57/2, 60 Feet Road,Nakkavanipalem, Visakhapatnam, Andhra Pradesh 530013</p>
         <p>
           Phone: <a href="tel:+917995198885" className="footer-link">+91 6302134335</a>
         </p>
         <p>
-          <a href="tel:+917995198885" className="footer-link">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+91 7995198885</a>
+          <a href="tel:+917659011189" className="footer-link">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+91 7995198885</a>
         </p>
         <p>
-          Email: <a href="mailto:yandapallisravankumar@gmail.com" className="footer-link">
-            yandapallisravankumar@gmail.com
+          Email: <a href="mailto:cocomelon@cocomelonkids.online" className="footer-link">
+            cocomelon@cocomelonkids.online
           </a>
         </p>
       </div>
