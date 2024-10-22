@@ -33,7 +33,7 @@ const LoginForm = () => {
         const data = await response.json();
         console.log('Login successful:', data);
         // Redirect to the main page after login success
-        navigate('/main');
+        navigate('/');
       } else {
         const errorData = await response.json();
         setError(errorData.error); // Display error message
